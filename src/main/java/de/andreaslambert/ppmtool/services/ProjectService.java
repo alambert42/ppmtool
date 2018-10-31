@@ -17,7 +17,6 @@ public class ProjectService {
     public Project saveOrUpdateProject(Project project){
         try {
             project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
-            project.setCreated_at(LocalDate.now());
             return projectRepository.save( project );
 
         } catch (Exception e){

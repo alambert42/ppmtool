@@ -1,7 +1,8 @@
 package de.andreaslambert.ppmtool.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -27,8 +28,14 @@ public class Project {
 
     private LocalDate start_date;
     private LocalDate end_date;
-    private LocalDate created_at;
-    private LocalDate updated_at;
+
+    @CreationTimestamp
+    @JsonFormat(pattern = "YYYY-MM-dd")
+    private Date created_At;
+
+    @UpdateTimestamp
+    @JsonFormat(pattern = "YYYY-MM-dd")
+    private Date updated_At;
 
     public Long getId() {
         return id;
@@ -78,19 +85,19 @@ public class Project {
         this.end_date = end_date;
     }
 
-    public LocalDate getCreated_at() {
-        return created_at;
+    public Date getCreated_At() {
+        return created_At;
     }
 
-    public void setCreated_at(LocalDate created_at) {
-        this.created_at = created_at;
+    public void setCreated_At(Date created_At) {
+        this.created_At = created_At;
     }
 
-    public LocalDate getUpdated_at() {
-        return updated_at;
+    public Date getUpdated_At() {
+        return updated_At;
     }
 
-    public void setUpdated_at(LocalDate updated_at) {
-        this.updated_at = updated_at;
+    public void setUpdated_At(Date updated_At) {
+        this.updated_At = updated_At;
     }
 }
